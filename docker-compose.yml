@@ -1,0 +1,17 @@
+version: '3'
+services:
+  nvr-camera1:
+    image: hpaolini/tiny-nvr
+    command: rtsp://username:password@address:port//Streaming/Channels/2 camera1
+    environment:
+      - TZ=America/Chicago
+    volumes:
+      - .:/usr/data/recordings
+  nvr-camera2:
+    image: hpaolini/tiny-nvr
+    command: rtsp://username:password@address:port//Streaming/Channels/2 camera2
+    environment:
+      - DIR_NAME_FORCE=true
+      - HOUSEKEEP_ENABLED=false
+    volumes:
+      - .:/usr/data/recordings
