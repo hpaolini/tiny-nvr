@@ -22,7 +22,7 @@ function getRandomName () {
 streamURL="${1}"
 dirName="${2}"
 dir="/usr/data/recordings"
-fileExtension="mp4"
+fileExtension=$(getLowercase "$VIDEO_FORMAT")
 
 echo "Environment Variables:"
 echo " TZ = $TZ"
@@ -56,10 +56,6 @@ done
 
 dir="$dir/$dirName"
 mkdir -p "$dir"
-
-if [ $(getLowercase "$VIDEO_FORMAT") == "mkv" ]; then
-    fileExtension="mkv"
-fi
 
 # remove old recordings
 if [ "$HOUSEKEEP_ENABLED" = true ]; then

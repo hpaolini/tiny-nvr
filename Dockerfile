@@ -18,7 +18,7 @@ LABEL version="1.0" \
 # HOUSEKEEP_ENABLED     : if set to "true", will clean old files
 # HOUSEKEEP_DAYS        : files older than these days will be removed
 # VIDEO_SEGMENT_TIME    : seconds of each clip - default 5 minutes
-# VIDEO_FORMAT          : save output as mkv or mp4 file
+# VIDEO_FORMAT          : save output with format file: mp4, mkv, mov...
 #                         (if you get format errors try changing the format)
 
 ENV TZ=Europe/Rome \
