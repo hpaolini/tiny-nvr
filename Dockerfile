@@ -30,12 +30,8 @@ ENV TZ=Europe/Rome \
     VIDEO_SEGMENT_TIME=900 \
     VIDEO_FORMAT=mp4
 
-ENV BASH_VERSION=4.4.19-r1 \
-    TZDATA_VERSION=2018f-r0 \
-    FFMPEG_VERSION=3.4.4-r1
-
 RUN apk update \
-    && apk add bash=$BASH_VERSION tzdata=$TZDATA_VERSION ffmpeg=$FFMPEG_VERSION \
+    && apk add bash tzdata ffmpeg \
     && rm -rf /var/cache/apk/* \
     && mkdir -p /usr/data/recordings
 
