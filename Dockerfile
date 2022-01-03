@@ -17,23 +17,21 @@ LABEL version="1.0" \
 #                         FILES COULD BE OVERWRITTEN BY ANOTHER PROCESS IF ENABLED!**
 # HOUSEKEEP_ENABLED     : if set to "true", will clean old files
 # HOUSEKEEP_DAYS        : files older than these days will be removed
+# LOG_LEVEL             : loglevel option for ffmpeg - default quiet
 # VIDEO_SEGMENT_TIME    : seconds of each clip - default 5 minutes
-# VIDEO_FORMAT          : save output as mkv or mp4 file
+# VIDEO_FORMAT          : save output with format file: mp4 (default), mkv, mov...
 #                         (if you get format errors try changing the format)
 
 ENV TZ=Europe/Rome \
     DIR_NAME_FORCE=false \
     HOUSEKEEP_ENABLED=true \
     HOUSEKEEP_DAYS=3 \
+    LOG_LEVEL=quiet \
     VIDEO_SEGMENT_TIME=900 \
     VIDEO_FORMAT=mp4
 
-ENV BASH_VERSION=4.4.19-r1 \
-    TZDATA_VERSION=2018f-r0 \
-    FFMPEG_VERSION=3.4.4-r1
-
 RUN apk update \
-    && apk add bash=$BASH_VERSION tzdata=$TZDATA_VERSION ffmpeg=$FFMPEG_VERSION \
+    && apk add bash tzdata ffmpeg \
     && rm -rf /var/cache/apk/* \
     && mkdir -p /usr/data/recordings
 

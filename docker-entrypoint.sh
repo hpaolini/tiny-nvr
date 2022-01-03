@@ -22,13 +22,14 @@ function getRandomName () {
 streamURL="${1}"
 dirName="${2}"
 dir="/usr/data/recordings"
-fileExtension="mp4"
+fileExtension=$(getLowercase "$VIDEO_FORMAT")
 
 echo "Environment Variables:"
 echo " TZ = $TZ"
 echo " DIR_NAME_FORCE = $DIR_NAME_FORCE"
 echo " HOUSEKEEP_ENABLED = $HOUSEKEEP_ENABLED"
 echo " HOUSEKEEP_DAYS = $HOUSEKEEP_DAYS"
+echo " LOG_LEVEL = $LOG_LEVEL"
 echo " VIDEO_SEGMENT_TIME = $VIDEO_SEGMENT_TIME"
 echo " VIDEO_FORMAT = $VIDEO_FORMAT"
 echo "Container Parameters:"
@@ -57,10 +58,6 @@ done
 dir="$dir/$dirName"
 mkdir -p "$dir"
 
-if [ $(getLowercase "$VIDEO_FORMAT") == "mkv" ]; then
-    fileExtension="mkv"
-fi
-
 # remove old recordings
 if [ "$HOUSEKEEP_ENABLED" = true ]; then
     cronDailyPath="/etc/periodic/daily"
@@ -86,4 +83,4 @@ ffmpeg -rtsp_transport tcp \
     -segment_atclocktime 1 \
     -strftime 1 \
     "$dir"/%Y-%m-%d_%H-%M-%S."$fileExtension" \
-    -loglevel panic
+    -loglevel $LOG_LEVEL

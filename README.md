@@ -30,8 +30,9 @@ I added the following environment variables for additional customization. (Remem
 | DIR_NAME_FORCE     | _false_       | use the folder name you pass as parameter during `docker run` even if it exists, otherwise it generates a new folder name |
 | HOUSEKEEP_ENABLED  | _true_        | cron job to delete old recordings |
 | HOUSEKEEP_DAYS     | _3_           | delete files older than this number of days, if HOUSEKEEP_ENABLED is enabled|
+| LOG_LEVEL          | _quiet_       | loglevel option for ffmpeg (check [ffmpeg documentation](https://ffmpeg.org/ffmpeg.html) for available levels)|
 | VIDEO_SEGMENT_TIME | _900_         | seconds of each recording[^1] |
-| VIDEO_FORMAT       | _mp4_           | save output as MKV or MP4 file |
+| VIDEO_FORMAT       | _mp4_         | save output with format: mp4, mkv, mov... |
 
 Combine this with Kubernetes or Docker Swarm and you've got a simple NVR with a small footprint. Happy hacking!
 
