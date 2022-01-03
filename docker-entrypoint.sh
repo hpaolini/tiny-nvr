@@ -29,6 +29,7 @@ echo " TZ = $TZ"
 echo " DIR_NAME_FORCE = $DIR_NAME_FORCE"
 echo " HOUSEKEEP_ENABLED = $HOUSEKEEP_ENABLED"
 echo " HOUSEKEEP_DAYS = $HOUSEKEEP_DAYS"
+echo " LOG_LEVEL = $LOG_LEVEL"
 echo " VIDEO_SEGMENT_TIME = $VIDEO_SEGMENT_TIME"
 echo " VIDEO_FORMAT = $VIDEO_FORMAT"
 echo "Container Parameters:"
@@ -82,4 +83,4 @@ ffmpeg -rtsp_transport tcp \
     -segment_atclocktime 1 \
     -strftime 1 \
     "$dir"/%Y-%m-%d_%H-%M-%S."$fileExtension" \
-    -loglevel panic
+    -loglevel $LOG_LEVEL
